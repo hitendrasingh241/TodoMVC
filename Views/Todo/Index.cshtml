@@ -1,0 +1,30 @@
+﻿@model IEnumerable<TodoMVC.Models.Todo>
+
+@{
+	ViewBag.Title = "Todo List";
+}
+
+<h2>Todo List</h2>
+
+<p>
+	@Html.ActionLink("Create New", "Create")
+</p>
+
+<table class="table">
+	<tr>
+		<th>Title</th>
+		<th>Completed?</th>
+		<th></th>
+	</tr>
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>@item.Title</td>
+			<td>@item.IsDone</td>
+			<td>
+				@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+				@Html.ActionLink("Delete", "Delete", new { id = item.Id })
+			</td>
+		</tr>
+	}
+</table>
